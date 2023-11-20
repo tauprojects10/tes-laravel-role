@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
     Route::get('', 'index')->name('kategori');
@@ -32,3 +32,16 @@ Route::controller(KategoriController::class)->prefix('kategori')->group(function
     Route::put('edit/{id}', 'update')->name('kategori.update');
     Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
 });
+
+Route::get('/', function () {
+    return view('user.pages.index');
+})->name('home');
+Route::get('shop', function () {
+    return view('user.pages.shop');
+})->name('shop');
+Route::get('shop-details', function () {
+    return view('user.pages.shop-details');
+})->name('shop-details');
+Route::get('/cart', function () {
+    return view('user.pages.shoping-cart');
+})->name('cart');
