@@ -2,16 +2,23 @@
 <nav class="navbar navbar-main navbar-expand-lg mx-5 px-0 shadow-none rounded" id="navbarBlur" navbar-scroll="true">
     <div class="container-fluid py-1 px-2">
         <nav aria-label="breadcrumb">
-            <!-- ... breadcrumb code ... -->
+            <ol class="breadcrumb bg-transparent mb-1 pb-0 pt-1 px-0 me-sm-6 me-5">
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
+                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
+                    {{ ucwords(str_replace(['/', '{id}'], [' ', ''], head(request()->segments()))) }}
+                </li>
+            </ol>
+            <h6 class="font-weight-bold mb-0">
+                {{ ucwords(str_replace(['/', '{id}'], [' ', ''], request()->route()->uri)) }}
+                @if (request()->route()->hasParameter('id'))
+                    ID : {{ request()->route('id') }}
+                @endif
+            </h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             </div>
             <ul class="navbar-nav  justify-content-end">
-                <!-- Dropdown for Notifications -->
-                <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                    <!-- ... dropdown notifikasi code ... -->
-                </li>
                 <!-- Dropdown for Profile -->
                 <li class="nav-item dropdown ps-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,11 +34,11 @@
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
-                                            John Doe
+                                            {{ Auth::user()->name }}
                                         </h6>
                                         <p class="text-xs text-secondary mb-0 d-flex align-items-center">
                                             <i class="fa fa-envelope opacity-6 me-1"></i>
-                                            john.doe@example.com
+                                            {{ Auth::user()->email }}
                                         </p>
                                     </div>
                                 </div>
