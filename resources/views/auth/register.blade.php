@@ -78,7 +78,7 @@
                                         <div class="mb-3">
                                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                                 placeholder="Enter your name" aria-label="Name" aria-describedby="name-addon"
-                                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
 
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
                                             <input type="email" class="form-control @error('email') is-invalid @enderror"
                                                 placeholder="Enter your email address" aria-label="Email"
                                                 aria-describedby="email-addon" name="email" value="{{ old('email') }}"
-                                                required autocomplete="email">
+                                                 autocomplete="email">
 
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -103,7 +103,7 @@
                                         <div class="mb-3">
                                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Create a password" aria-label="Password"
-                                                aria-describedby="password-addon" name="password" required
+                                                aria-describedby="password-addon" name="password"
                                                 autocomplete="new-password">
 
                                             @error('password')
@@ -114,9 +114,15 @@
                                         </div>
                                         <label> Re-Password</label>
                                         <div class="mb-3">
-                                            <input type="password" class="form-control" placeholder="Create a password"
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Create a password"
                                                 aria-label="Password" aria-describedby="password-addon"
-                                                name="password_confirmation" required autocomplete="new-password">
+                                                name="password_confirmation"  autocomplete="new-password">
+
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-dark w-100 mt-4 mb-3">Sign up</button>
