@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_pengiriman', function (Blueprint $table) {
+        Schema::create('tb_keranjang', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pesanan_id')->constrained('tb_pesanan')->restrictOnDelete();
-            $table->string('metode_pengiriman');
-            $table->string('status_pengiriman');
-            $table->date('tanggal_pengiriman');
-            $table->date('tanggal_menerima');
+            $table->foreignId('produk_id')->constrained('tb_produk')->restrictOnDelete();
+            $table->integer('jumlah');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_pengiriman');
+        Schema::dropIfExists('tb_keranjang');
     }
 };

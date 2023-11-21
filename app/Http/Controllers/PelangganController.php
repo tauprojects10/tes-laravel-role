@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 
 class PelangganController extends Controller
@@ -11,7 +12,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = Pelanggan::all();
+        return view("pelanggan.index", compact('pelanggan'));
     }
 
     /**
@@ -19,7 +21,8 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        $pelanggan = Pelanggan::all();
+        return view("pelanggan.create");
     }
 
     /**
@@ -27,7 +30,7 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

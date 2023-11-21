@@ -10,14 +10,14 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('tb_pembayaran', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_pesanan')->constrained('tb_pesanan')->restrictOnDelete();
-            $table->boolean('status_pembayaran');
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('tb_pembayaran', function (Blueprint $table) {
+        $table->id();
+        $table->string('nama_pembayaran', 100);
+        $table->enum('status_pembayaran', ['belum dibayar', 'dibayar'])->default('belum dibayar');
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.

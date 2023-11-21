@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -11,7 +12,8 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        //
+        $pembayaran = Pembayaran::all();
+        return view("pembayaran.index", compact('pembayaran'));
     }
 
     /**
@@ -19,7 +21,8 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        //
+        $pembayaran = Pembayaran::all();
+        return view("pembayaran.create", compact('pembayaran'));
     }
 
     /**
@@ -27,7 +30,8 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pembayaran::create($request->all());
+        return redirect()->route('pembayaran')->with("success","Payment data has been successfully added!");
     }
 
     /**
@@ -43,7 +47,8 @@ class PembayaranController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pembayaran = Pembayaran::find($id);
+        return view("pembayaran.edit", compact('pembayaran'));
     }
 
     /**
@@ -51,7 +56,9 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pembayaran = Pembayaran::find($id);
+        $pembayaran->update($request->all());
+        return redirect()->route('pembayaran')->with("success", "Payment data has been successfully updated!");
     }
 
     /**

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_detail_pesanan', function (Blueprint $table) {
+        Schema::create('tb_pengiriman', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pesanan_id')->constrained('tb_pesanan')->restrictOnDelete();
-            $table->foreignId('produk_id')->constrained('tb_produk')->restrictOnDelete();
-            $table->integer('jumlah');
-            $table->integer('subtotal');
+            $table->string('metode_pengiriman', 100);
+            $table->enum('status_pengiriman', ['belum diterima', 'diterima'])->default('belum diterima');
+            $table->date('tanggal_pengiriman');
+            $table->date('tanggal_menerima');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_detail_pesanan');
+        Schema::dropIfExists('tb_pengiriman');
     }
 };

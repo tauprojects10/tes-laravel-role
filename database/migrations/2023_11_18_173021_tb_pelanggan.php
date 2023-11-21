@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_pelanggan', function (Blueprint $table) {
-            $table->foreignId('pelanggan_id')->constrained('users');
-            $table->string('NamaPelanggan', 100);
-            $table->text('Alamat');
-            $table->string('NomorTelepon', 50);
+            $table->id();
+            $table->foreignId('users_id')->constrained('users');
+            $table->text('alamat');
+            $table->string('nomor_telepon', 50);
+            $table->timestamps();
         });
     }
 
