@@ -3,6 +3,7 @@
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,4 +50,12 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
     Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
     Route::put('edit/{id}', 'update')->name('pembayaran.update');
     Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+});
+Route::controller(ProdukController::class)->prefix('produk')->group(function () {
+    Route::get('/', 'index')->name('produk.index');
+    Route::get('create', 'create')->name('produk.create');
+    Route::post('store', 'store')->name('produk.store');
+    Route::get('edit/{id}', 'edit')->name('produk.edit');
+    Route::put('edit/{id}', 'update')->name('produk.update');
+    Route::delete('destroy/{id}', 'destroy')->name('produk.destroy');
 });
