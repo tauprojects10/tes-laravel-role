@@ -35,6 +35,7 @@ Route::controller(KategoriController::class)->prefix('kategori')->group(function
     Route::put('edit/{id}', 'update')->name('kategori.update');
     Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
 });
+
 Route::controller(PelangganController::class)->prefix('pelanggan')->group(function () {
     Route::get('', 'index')->name('pelanggan');
     Route::get('create', 'create')->name('pelanggan.create');
@@ -43,6 +44,7 @@ Route::controller(PelangganController::class)->prefix('pelanggan')->group(functi
     Route::put('edit/{id}', 'update')->name('pelanggan.update');
     Route::delete('destroy/{id}', 'destroy')->name('pelanggan.destroy');
 });
+
 Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
     Route::get('', 'index')->name('pembayaran');
     Route::get('create', 'create')->name('pembayaran.create');
@@ -51,8 +53,9 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
     Route::put('edit/{id}', 'update')->name('pembayaran.update');
     Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
 });
+
 Route::controller(ProdukController::class)->prefix('produk')->group(function () {
-    Route::get('/', 'index')->name('produk.index');
+    Route::get('/', 'index')->name('produk');
     Route::get('create', 'create')->name('produk.create');
     Route::post('store', 'store')->name('produk.store');
     Route::get('edit/{id}', 'edit')->name('produk.edit');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kategori;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -12,7 +12,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategori = kategori::all();
+        $kategori = Kategori::all();
         return view('kategori.index', compact('kategori'));
     }
 
@@ -29,14 +29,14 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        kategori::create($request->all());
+        Kategori::create($request->all());
         return redirect()->route('kategori')->with("success", "Category data has been successfully added!");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(kategori $kategori)
+    public function show(Kategori $kategori)
     {
         //
     }
@@ -46,7 +46,7 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        $kategori = kategori::find($id);
+        $kategori = Kategori::find($id);
         return view ('kategori.edit', compact('kategori'));
     }
 
@@ -55,7 +55,7 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $kategori = kategori::find($id);
+        $kategori = Kategori::find($id);
         $kategori->update($request->all());
         return redirect()->route('kategori')->with("success", "Category data has been successfully updated!");
 
@@ -66,7 +66,7 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        $kategori= kategori::find($id);
+        $kategori= Kategori::find($id);
         $kategori->delete();
         return redirect()->route("kategori")->with("success","Category data has been successfully deleted!");
     }

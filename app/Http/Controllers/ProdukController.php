@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\produk;
-use App\Models\kategori;
+use App\Models\Produk;
+use App\Models\Kategori;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -16,7 +16,7 @@ class ProdukController extends Controller
     public function index()
     {
         return view("produk.index", [
-            "produks"=> produk::all()
+            "produks"=> Produk::all()
         ]);
     }
 
@@ -26,7 +26,7 @@ class ProdukController extends Controller
     public function create()
     {
         return view("produk.create", [
-            "kategoris"=> kategori::all(),
+            "kategoris"=> Kategori::all(),
             "suppliers"=> Supplier::all()
         ]);
     }
@@ -72,9 +72,9 @@ class ProdukController extends Controller
      */
     public function edit(string $id)
     {
-        $produk = produk::find($id);
-        $suppliers = supplier::all();
-        $kategoris = kategori::all();
+        $produk = Produk::find($id);
+        $suppliers = Supplier::all();
+        $kategoris = Kategori::all();
 
         return view('produk.edit', compact('produk', 'suppliers', 'kategoris'));
     }
@@ -84,7 +84,7 @@ class ProdukController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $produk = produk::find($id);
+        $produk = Produk::find($id);
 
         // Memeriksa apakah data yang akan diubah sama dengan data sebelumnya   
         // if (
@@ -128,7 +128,7 @@ class ProdukController extends Controller
      */
     public function destroy(string $id)
     {
-        $produk = produk::findOrfail($id);
+        $produk = Produk::findOrfail($id);
         // return dd($produk);
 
         if ($produk) {

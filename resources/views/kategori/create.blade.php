@@ -4,6 +4,7 @@
 <div class="container-fluid py-4 px-5">
     <div class="row">
       <div class="col-12">
+        @can('create kategori')
         <div class="card border shadow-xs mb-4">
     <form role="form" action="{{ route('kategori.store') }}" method="POST">
         @csrf
@@ -37,6 +38,9 @@
             </div>
           </div>
         </div>
+        @else
+            <p>Maaf, anda tidak memiliki hak akses ini.</p>
+        @endcan
       </div>
     </div>
     @include('layout.footer')
